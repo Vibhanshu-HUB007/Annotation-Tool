@@ -42,6 +42,11 @@
   uvicorn main:app --host 0.0.0.0 --port $PORT
   ```
 
+**OR use Docker (if you prefer):**
+- **Environment**: `Docker`
+- **Dockerfile Path**: `backend/Dockerfile`
+- (No build/start commands needed with Docker)
+
 **Advanced Settings:**
 - **Auto-Deploy**: `Yes` (deploys on every push)
 
