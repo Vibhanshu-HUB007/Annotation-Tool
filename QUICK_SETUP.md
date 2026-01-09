@@ -42,13 +42,13 @@
 **Variable 1: DATABASE_URL**
 - **Key**: `DATABASE_URL`
 - **Value**: Paste the Internal Database URL you copied from Step 2
-- Click **"Save"**
+- Click **"Save and Deploy"** (this will save the variable and restart your service)
 
 **Variable 2: SECRET_KEY**
 - Click **"Add Environment Variable"** again
 - **Key**: `SECRET_KEY`
 - **Value**: `WxVt6bWR83RJrCMVepgv1wuxgRQd83_4wE5wDzIVzP0`
-- Click **"Save"**
+- Click **"Save and Deploy"**
 
 **Variable 3: CORS_ORIGINS**
 - Click **"Add Environment Variable"** again
@@ -56,7 +56,12 @@
 - **Value**: 
   - If you have a frontend URL: `https://your-frontend.vercel.app` (replace with your actual URL)
   - If you don't have a frontend yet: `*` (allows all origins - only for development)
-- Click **"Save"**
+- Click **"Save and Deploy"**
+
+> **Note**: You'll see three options when saving:
+> - **"Save"** - Just saves, doesn't restart (not recommended)
+> - **"Save and Deploy"** ← **Choose this one!** (saves and restarts to pick up new variables)
+> - **"Save, Rebuild and Deploy"** - Full rebuild (not necessary for env vars, but works too)
 
 ### Optional (but recommended):
 

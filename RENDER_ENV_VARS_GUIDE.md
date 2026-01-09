@@ -33,13 +33,17 @@ Click on the **"Environment Variables"** section to expand it.
 2. Look for a button that says **"Add Environment Variable"** (usually blue, at the top right)
 3. Click it
 
-### Step 4: Enter Each Variable
+### Step 5: Enter Each Variable
 
 A popup or form will appear. For each variable:
 
 1. **Key** field: Enter the variable name (e.g., `DATABASE_URL`)
 2. **Value** field: Enter the variable value
-3. Click **"Save"** or **"Add"**
+3. You'll see three save options:
+   - **"Save"** - Just saves, doesn't restart (❌ not recommended)
+   - **"Save and Deploy"** - Saves and restarts service (✅ **Choose this!**)
+   - **"Save, Rebuild and Deploy"** - Full rebuild (works but unnecessary)
+4. Click **"Save and Deploy"** ✅
 
 Repeat for each variable you need to add.
 
@@ -51,7 +55,7 @@ Repeat for each variable you need to add.
    - If you have a frontend: `https://your-app.vercel.app`
    - If testing locally: `http://localhost:5173,http://localhost:3000`
    - If you want to allow all (development only): `*`
-4. Click **"Save"**
+4. Click **"Save and Deploy"** ✅ (not just "Save")
 
 ## What Happens After Adding Variables?
 
