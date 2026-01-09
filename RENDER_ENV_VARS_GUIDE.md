@@ -19,9 +19,18 @@ You have two ways to access environment variables:
 - You'll see tabs like: **Overview**, **Logs**, **Events**, **Environment**, **Settings**
 - Click on **"Environment"** tab
 
-### Step 3: Add Environment Variables
-1. You'll see a section titled **"Environment Variables"**
-2. There's a button that says **"Add Environment Variable"** (usually blue)
+### Step 3: Click on "Environment Variables" Section
+Once you're on the Environment page, you'll see **three sections**:
+
+1. **Environment Variables** ← **Click on this one!**
+2. Secret Files
+3. Linked Environment Groups
+
+Click on the **"Environment Variables"** section to expand it.
+
+### Step 4: Add Environment Variables
+1. Inside the "Environment Variables" section, you'll see existing variables (if any) or an empty list
+2. Look for a button that says **"Add Environment Variable"** (usually blue, at the top right)
 3. Click it
 
 ### Step 4: Enter Each Variable
@@ -72,16 +81,33 @@ Repeat for each variable you need to add.
 - Click the **trash/delete icon** next to it
 - Confirm deletion
 
-## Screenshot Locations (if you're stuck)
+## Visual Layout (if you're stuck)
 
-The Environment Variables section typically looks like this:
+The Environment page looks like this:
+
+```
+┌─────────────────────────────────────┐
+│  Environment                        │
+├─────────────────────────────────────┤
+│  ▼ Environment Variables            │  ← Click here!
+│    [Add Environment Variable] [+]   │
+│    Key              Value            │
+│    ────────────────────────────────│
+│    (your variables will appear here)│
+│                                     │
+│  Secret Files                       │
+│                                     │
+│  Linked Environment Groups          │
+└─────────────────────────────────────┘
+```
+
+After clicking "Environment Variables", you'll see:
 
 ```
 ┌─────────────────────────────────────┐
 │  Environment Variables              │
+│  [Add Environment Variable]  [+]   │  ← Click this button
 ├─────────────────────────────────────┤
-│  [Add Environment Variable]  [+]   │
-│                                     │
 │  Key              Value            │
 │  ──────────────────────────────────│
 │  (empty or existing variables)     │

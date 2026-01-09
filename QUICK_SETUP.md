@@ -29,9 +29,13 @@
 1. Go to [Render Dashboard](https://dashboard.render.com)
 2. Click on your backend service (it should be named something like `annotation-tool-v7mu` or similar)
 3. In the left sidebar, click **"Environment"** (or look for the **"Environment"** tab at the top)
-4. You'll see a section with existing environment variables (or it might be empty)
-5. Click the **"Add Environment Variable"** button (usually a blue button)
-6. Add each variable one by one:
+4. You'll see three sections:
+   - **Environment Variables** ← Click on this one!
+   - Secret Files
+   - Linked Environment Groups
+5. Click on **"Environment Variables"** section
+6. You'll see a button that says **"Add Environment Variable"** (usually a blue button)
+7. Click it and add each variable one by one:
 
 ### Required Variables:
 
