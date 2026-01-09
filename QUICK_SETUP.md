@@ -55,8 +55,14 @@
 - **Key**: `CORS_ORIGINS`
 - **Value**: 
   - If you have a frontend URL: `https://your-frontend.vercel.app` (replace with your actual URL)
+  - If you have multiple frontends: `https://app1.vercel.app,https://app2.netlify.app` (comma-separated, no spaces)
   - If you don't have a frontend yet: `*` (allows all origins - only for development)
 - Click **"Save and Deploy"**
+
+> **Note**: You can enter CORS_ORIGINS as:
+> - A single URL: `https://your-app.vercel.app`
+> - Multiple URLs (comma-separated): `https://app1.vercel.app,https://app2.netlify.app`
+> - Wildcard (dev only): `*`
 
 > **Note**: You'll see three options when saving:
 > - **"Save"** - Just saves, doesn't restart (not recommended)
