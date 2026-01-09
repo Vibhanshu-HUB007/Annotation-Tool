@@ -57,6 +57,11 @@ async def upload_wsi(
     # Process WSI metadata
     try:
         if file_ext in [".svs", ".tiff", ".tif", ".ndpi", ".mrxs"]:
+            if not HAS_OPENSLIDE:
+                raise HTTPException(
+                    status_code=status.HTTP_501_NOT_IMPLEMENTED,
+                    detail="OpenSlide library not available. WSI file processing requires openslide-python and system libraries."
+                )
             slide = openslide.OpenSlide(str(file_path))
             width, height = slide.dimensions
             mpp_x = float(slide.properties.get(openslide.PROPERTY_NAME_MPP_X, 0))
