@@ -1,0 +1,40 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: backend/requirements.txt
+      
+      - name: Install dependencies
+        working-directory: ./backend
+        run: |
+          pip install -r requirements.txt
+      
+      - name: Run tests (if any)
+        working-directory: ./backend
+        run: |
+          echo "Add tests here"
+          # pytest tests/  # Uncomment when tests are added
+      
+      - name: Deploy to Railway
+        uses: bervProject/railway-deploy@v1.0.0
+        with:
+          railway_token: ${{ secrets.RAILWAY_TOKEN }}
+          service: ${{ secrets.RAILWAY_SERVICE_ID }}
+          detach: true

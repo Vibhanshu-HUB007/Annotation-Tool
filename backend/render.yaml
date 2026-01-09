@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: oral-cytology-api
+    env: python
+    buildCommand: pip install -r requirements.txt && python scripts/init_db.py
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: https://your-frontend-domain.vercel.app,https://your-frontend-domain.netlify.app
+      - key: UPLOAD_DIR
+        value: ./uploads
+      - key: CACHE_DIR
+        value: ./cache
