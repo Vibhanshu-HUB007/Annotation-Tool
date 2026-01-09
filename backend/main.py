@@ -14,9 +14,15 @@ from app.api import auth, annotations, wsi, labels, users, export, ai
 from app.core.config import settings
 from app.core.database import engine, Base
 from app.core.security import get_current_user
+from app.scripts.init_db import init_database
 
-# Create database tables
+# Create database tables and initialize with default data
 Base.metadata.create_all(bind=engine)
+try:
+    init_database()
+except Exception as e:
+    # Log error but don't fail startup if database is already initialized
+    print(f"Database initialization note: {e}")
 
 app = FastAPI(
     title="Oral Cytology WSI Annotation Tool API",
