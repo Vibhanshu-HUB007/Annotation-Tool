@@ -14,7 +14,14 @@ from app.api import auth, annotations, wsi, labels, users, export, ai
 from app.core.config import settings
 from app.core.database import engine, Base
 from app.core.security import get_current_user
-from app.scripts.init_db import init_database
+
+# Import init_database - handle if scripts directory doesn't exist
+try:
+    from scripts.init_db import init_database
+except ImportError:
+    # If scripts not available, create a dummy function
+    def init_database():
+        print("Database initialization skipped (scripts not available)")
 
 # Create database tables and initialize with default data
 Base.metadata.create_all(bind=engine)
