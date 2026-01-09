@@ -25,11 +25,16 @@ except ImportError:
 
 # Create database tables and initialize with default data
 Base.metadata.create_all(bind=engine)
+
+# Initialize database with default data
+# This runs on every startup but only creates if not exists
 try:
     init_database()
 except Exception as e:
-    # Log error but don't fail startup if database is already initialized
-    print(f"Database initialization note: {e}")
+    # Log error but don't fail startup
+    import traceback
+    print(f"Database initialization: {e}")
+    print(traceback.format_exc())
 
 app = FastAPI(
     title="Oral Cytology WSI Annotation Tool API",
