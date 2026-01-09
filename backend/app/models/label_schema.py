@@ -2,7 +2,7 @@
 Label schema model
 """
 
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, JSON, Boolean
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, JSON, Boolean, Text
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
