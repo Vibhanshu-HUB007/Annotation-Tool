@@ -9,7 +9,14 @@ from pathlib import Path
 import shutil
 import os
 from PIL import Image
-import openslide
+
+# Optional openslide import (requires system libraries)
+try:
+    import openslide
+    HAS_OPENSLIDE = True
+except ImportError:
+    HAS_OPENSLIDE = False
+    openslide = None
 
 from app.core.database import get_db
 from app.core.security import get_current_active_user

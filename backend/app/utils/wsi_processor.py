@@ -2,13 +2,22 @@
 WSI processing utilities
 """
 
-import openslide
+# Optional openslide import (requires system libraries)
+try:
+    import openslide
+    HAS_OPENSLIDE = True
+except ImportError:
+    HAS_OPENSLIDE = False
+    openslide = None
+
 from PIL import Image
 import io
 from pathlib import Path
 
 def process_wsi_file(file_path: str):
     """Process a WSI file and extract metadata"""
+    if not HAS_OPENSLIDE:
+        raise ImportError("OpenSlide library not available. Install openslide-python and system libraries.")
     slide = openslide.OpenSlide(file_path)
     try:
         metadata = {
@@ -24,6 +33,8 @@ def process_wsi_file(file_path: str):
 
 def get_wsi_tile(file_path: str, level: int, x: int, y: int, tile_size: int = 256, format: str = "jpeg"):
     """Extract a tile from a WSI file"""
+    if not HAS_OPENSLIDE:
+        raise ImportError("OpenSlide library not available. Install openslide-python and system libraries.")
     slide = openslide.OpenSlide(file_path)
     try:
         # Get tile
@@ -47,6 +58,8 @@ def get_wsi_tile(file_path: str, level: int, x: int, y: int, tile_size: int = 25
 
 def get_wsi_info(file_path: str):
     """Get basic information about a WSI file"""
+    if not HAS_OPENSLIDE:
+        raise ImportError("OpenSlide library not available. Install openslide-python and system libraries.")
     slide = openslide.OpenSlide(file_path)
     try:
         return {
