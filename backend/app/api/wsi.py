@@ -85,7 +85,7 @@ async def upload_wsi(
         mpp_y=mpp_y,
         magnification=magnification,
         levels=levels,
-        metadata=metadata,
+        wsi_metadata=metadata,
         study_instance_uid=study_instance_uid,
         patient_id=patient_id,
         uploader_id=current_user.id

@@ -28,7 +28,7 @@ class WSIFileResponse(WSIFileBase):
     mpp_y: Optional[float] = None
     magnification: Optional[float] = None
     levels: Optional[int] = None
-    metadata: Optional[Dict[str, Any]] = None
+    wsi_metadata: Optional[Dict[str, Any]] = None
     study_instance_uid: Optional[str] = None
     patient_id: Optional[str] = None
     study_date: Optional[datetime] = None

@@ -25,7 +25,7 @@ class WSIFile(Base):
     mpp_y = Column(Float, nullable=True)  # microns per pixel Y
     magnification = Column(Float, nullable=True)  # e.g., 20.0, 40.0
     levels = Column(Integer, nullable=True)  # pyramid levels
-    metadata = Column(JSON, nullable=True)  # Additional metadata
+    wsi_metadata = Column(JSON, nullable=True)  # Additional metadata (renamed from 'metadata' - reserved in SQLAlchemy)
     
     # Study information
     study_instance_uid = Column(String, nullable=True)
