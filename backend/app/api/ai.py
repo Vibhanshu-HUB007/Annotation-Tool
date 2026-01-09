@@ -15,6 +15,13 @@ from app.models.annotation import Annotation
 
 router = APIRouter()
 
+# Check if ML libraries are available
+try:
+    import torch
+    ML_AVAILABLE = True
+except ImportError:
+    ML_AVAILABLE = False
+
 class AISuggestionRequest(BaseModel):
     wsi_id: int
     region: Optional[dict] = None  # Bounding box or region of interest
@@ -38,6 +45,12 @@ async def get_ai_suggestions(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="WSI file not found"
+        )
+    
+    if not ML_AVAILABLE:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="AI features require ML libraries. Install torch, torchvision, and onnxruntime to enable."
         )
     
     # TODO: Implement actual AI model inference
