@@ -26,26 +26,33 @@
 
 ## Step 3: Add Environment Variables to Backend
 
-1. Go to your backend service: `annotation-tool-v7mu`
-2. Click **"Environment"** tab
-3. Click **"Add Environment Variable"** and add these:
+1. Go to [Render Dashboard](https://dashboard.render.com)
+2. Click on your backend service (it should be named something like `annotation-tool-v7mu` or similar)
+3. In the left sidebar, click **"Environment"** (or look for the **"Environment"** tab at the top)
+4. You'll see a section with existing environment variables (or it might be empty)
+5. Click the **"Add Environment Variable"** button (usually a blue button)
+6. Add each variable one by one:
 
 ### Required Variables:
 
-```bash
-DATABASE_URL=postgresql://user:password@host:port/dbname
-```
-*(Paste the Internal Database URL you copied)*
+**Variable 1: DATABASE_URL**
+- **Key**: `DATABASE_URL`
+- **Value**: Paste the Internal Database URL you copied from Step 2
+- Click **"Save"**
 
-```bash
-SECRET_KEY=WxVt6bWR83RJrCMVepgv1wuxgRQd83_4wE5wDzIVzP0
-```
-*(This is a secure key I generated for you)*
+**Variable 2: SECRET_KEY**
+- Click **"Add Environment Variable"** again
+- **Key**: `SECRET_KEY`
+- **Value**: `WxVt6bWR83RJrCMVepgv1wuxgRQd83_4wE5wDzIVzP0`
+- Click **"Save"**
 
-```bash
-CORS_ORIGINS=https://your-frontend.vercel.app
-```
-*(Replace with your actual frontend URL, or use `*` for development)*
+**Variable 3: CORS_ORIGINS**
+- Click **"Add Environment Variable"** again
+- **Key**: `CORS_ORIGINS`
+- **Value**: 
+  - If you have a frontend URL: `https://your-frontend.vercel.app` (replace with your actual URL)
+  - If you don't have a frontend yet: `*` (allows all origins - only for development)
+- Click **"Save"**
 
 ### Optional (but recommended):
 
