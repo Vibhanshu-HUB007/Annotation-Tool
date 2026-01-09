@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-import { Box, Paper, Drawer, Typography, Button, IconButton } from '@mui/material'
-import { Close, Save, Download } from '@mui/icons-material'
-import { useState } from 'react'
+import { Box, Drawer, Typography, IconButton } from '@mui/material'
+import { Close } from '@mui/icons-material'
+import { useState, useEffect } from 'react'
 import api from '../api/client'
 import { WSIViewer } from '../components/WSIViewer'
 import { AnnotationToolbar } from '../components/AnnotationToolbar'
@@ -22,7 +22,7 @@ interface WSIFile {
 export default function Viewer() {
   const { wsiId } = useParams<{ wsiId: string }>()
   const [panelOpen, setPanelOpen] = useState(true)
-  const { annotations, setAnnotations } = useAnnotationStore()
+  const { setAnnotations } = useAnnotationStore()
 
   const { data: wsiFile, isLoading } = useQuery<WSIFile>({
     queryKey: ['wsi-file', wsiId],
@@ -33,17 +33,20 @@ export default function Viewer() {
     enabled: !!wsiId,
   })
 
-  const { data: wsiAnnotations } = useQuery({
+  const { data: wsiAnnotations } = useQuery<unknown[]>({
     queryKey: ['annotations', wsiId],
     queryFn: async () => {
       const response = await api.get(`/annotations/wsi/${wsiId}`)
       return response.data
     },
     enabled: !!wsiId,
-    onSuccess: (data) => {
-      setAnnotations(data)
-    },
   })
+
+  useEffect(() => {
+    if (wsiAnnotations) {
+      setAnnotations(wsiAnnotations as any)
+    }
+  }, [wsiAnnotations, setAnnotations])
 
   const handleSave = async () => {
     try {

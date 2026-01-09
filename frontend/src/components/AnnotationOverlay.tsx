@@ -11,7 +11,6 @@ interface AnnotationOverlayProps {
 
 export function AnnotationOverlay({
   viewer,
-  wsiId,
   annotations,
 }: AnnotationOverlayProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
@@ -60,9 +59,7 @@ export function AnnotationOverlay({
       if (!fabricCanvas) return
       fabricCanvas.clear()
 
-      const bounds = viewport.getBounds()
       const zoom = viewport.getZoom()
-      const containerSize = viewport.getContainerSize()
 
       annotations.forEach((ann) => {
         if (!ann.is_visible) return

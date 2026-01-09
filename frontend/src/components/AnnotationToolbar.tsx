@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  IconButton,
   Menu,
   MenuItem,
   Tooltip,
@@ -10,14 +9,11 @@ import {
 } from '@mui/material'
 import {
   Edit,
-  Straighten,
   CropFree,
   RadioButtonUnchecked,
   Delete,
   Save,
   Download,
-  Visibility,
-  VisibilityOff,
 } from '@mui/icons-material'
 import { useState } from 'react'
 import { useAnnotationStore } from '../store/annotationStore'

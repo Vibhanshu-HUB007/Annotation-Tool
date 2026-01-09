@@ -1,11 +1,9 @@
-import { useState } from 'react'
 import {
   Box,
   List,
   ListItem,
   ListItemText,
   IconButton,
-  TextField,
   Select,
   MenuItem,
   FormControl,
@@ -13,7 +11,7 @@ import {
   Chip,
   Typography,
 } from '@mui/material'
-import { Delete, Edit, Visibility, VisibilityOff, Lock, LockOpen } from '@mui/icons-material'
+import { Delete, Visibility, VisibilityOff, Lock } from '@mui/icons-material'
 import { useAnnotationStore } from '../store/annotationStore'
 import { useQuery } from '@tanstack/react-query'
 import api from '../api/client'
@@ -23,7 +21,7 @@ interface AnnotationPanelProps {
   wsiId: number
 }
 
-export function AnnotationPanel({ wsiId }: AnnotationPanelProps) {
+export function AnnotationPanel({}: AnnotationPanelProps) {
   const { annotations, selectedAnnotation, setSelectedAnnotation, currentLabel, setCurrentLabel } =
     useAnnotationStore()
 
